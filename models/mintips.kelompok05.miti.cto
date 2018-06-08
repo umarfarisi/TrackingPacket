@@ -1,0 +1,34 @@
+namespace mintips.kelompok05.miti
+
+/**
+status = todo, progress, or done
+ */
+asset Packet identified by id {
+    o String id
+    o String status
+    o String name
+    o Double weight
+    o Double length
+    o Double width
+    o Double height
+    --> Checkpoint checkpoint
+    --> Person sender
+    --> Person receiver
+}
+participant Person identified by username {
+    o String username
+    o String firstName
+    o String lastName
+}
+
+participant Checkpoint identified by id {
+  o String id
+  o String name
+  o String location
+}
+
+transaction Ship {
+    --> Packet packet
+    --> Checkpoint newCheckpoint
+    o String newStatus
+}
